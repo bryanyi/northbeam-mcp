@@ -11,7 +11,7 @@ if (!NORTHBEAM_API_KEY || !NORTHBEAM_CLIENT_ID) {
   process.exit(1);
 }
 
-const API_BASE = "https://api.northbeam.io/v1";
+const API_BASE = "https://api.northbeam.io";
 
 const AUTH_HEADERS: AuthHeaders = {
   Authorization: NORTHBEAM_API_KEY,
@@ -48,7 +48,7 @@ server.tool(
   },
   async ({ start_date, end_date }) => {
     const data = await northbeamFetch<Order[]>(
-      `/orders?start_date=${start_date}&end_date=${end_date}`
+      `/v2/orders?start_date=${start_date}&end_date=${end_date}`
     );
     return {
       content: [{ type: "text", text: JSON.stringify(data, null, 2) }],

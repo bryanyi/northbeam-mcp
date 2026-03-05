@@ -8,13 +8,36 @@ You'll need a Northbeam **Client ID** and **API Key**. Retrieve these from your 
 
 ## Setup
 
-**1. Install dependencies**
+**1. Clone this repository**
+
+You'll need Git installed to download this project. If you don't have it, get it at [git-scm.com/downloads](https://git-scm.com/downloads) and follow the installer for your operating system.
+
+Once Git is installed, download the project files to your computer by running:
+
+```bash
+git clone https://github.com/bryanyi/northbeam-mcp.git
+```
+
+This will create a folder called `northbeam-mcp` in whatever directory your terminal is currently in. If you're unsure where that is, it's usually your home folder (e.g. `/Users/yourname` on Mac). You can choose a different location by navigating to it first — for example, to put it on your Desktop:
+
+```bash
+cd ~/Desktop
+git clone https://github.com/bryanyi/northbeam-mcp.git
+```
+
+Once cloned, move into the folder:
+
+```bash
+cd northbeam-mcp
+```
+
+**2. Install dependencies**
 
 ```bash
 npm install
 ```
 
-**2. Run the setup script**
+**3. Run the setup script**
 
 ```bash
 ./start.sh
