@@ -1,6 +1,6 @@
 # Northbeam MCP
 
-An MCP server that exposes [Northbeam](https://www.northbeam.io/) data to AI assistants via the [Model Context Protocol](https://modelcontextprotocol.io/).
+An MCP server that exposes [Northbeam](https://www.northbeam.io/) data to AI assistants via the [Model Context Protocol](https://modelcontextprotocol.io/). It uses Northbeam's [Data Export API](https://docs.northbeam.io/data-export-api).
 
 ## Prerequisites
 
