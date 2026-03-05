@@ -26,18 +26,33 @@ export interface Order {
   products: OrderProduct[];
 }
 
-export interface SpendEntry {
-  date: string;
-  platform_name: string;
-  campaign_id: string;
-  campaign_name: string;
-  spend: number;
-  spend_currency: string;
-  platform_account_id?: string;
-  adset_id?: string;
-  adset_name?: string;
-  ad_id?: string;
-  ad_name?: string;
-  impressions?: number;
-  clicks?: number;
+export interface ExportRequest {
+  level?: "platform" | "campaign" | "adset" | "ad";
+  time_granularity?: "DAILY" | "WEEKLY" | "MONTHLY";
+  period_type?: string;
+  options?: {
+    export_aggregation?: "BREAKDOWN" | "AGGREGATE";
+    remove_zero_spend?: boolean;
+    aggregate_data?: boolean;
+    include_ids?: boolean;
+    include_kind_and_platform?: boolean;
+  };
+  attribution_options: {
+    attribution_models: string[];
+    accounting_modes: string[];
+    attribution_windows: string[];
+  };
+  metrics: Array<{ id: string; label?: string }>;
+}
+
+export interface ExportJobResponse {
+  id: string;
+}
+
+export interface ExportResultResponse {
+  data_export_id: string;
+  status: "PENDING" | "SUCCESS" | "FAILED";
+  result?: string[];
+  created_at: string;
+  finished_at?: string;
 }

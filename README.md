@@ -82,6 +82,17 @@ Common config file locations:
 | Cursor | `~/.cursor/mcp.json` |
 | Windsurf | `~/.windsurf/mcp.json` |
 
+## Updating
+
+If you previously cloned this repository, pull the latest changes and restart your MCP client:
+
+```bash
+cd northbeam-mcp
+git pull
+```
+
+No reinstall or build step needed.
+
 ## Available tools
 
 ### `get_orders`
@@ -92,10 +103,15 @@ Fetch orders within a date range.
 | `start_date` | `YYYY-MM-DD` | Start of the date range |
 | `end_date` | `YYYY-MM-DD` | End of the date range |
 
-### `list_spend`
-List ad spend entries within a date range.
+### `get_marketing_performance`
+Fetch attributed marketing performance data (spend, revenue, CAC, AOV, ROAS, etc.) broken down by platform, campaign, adset, or ad. The assistant will call this automatically when asked about marketing performance or ad spend.
 
-| Parameter | Type | Description |
-|---|---|---|
-| `start_date` | `YYYY-MM-DD` | Start of the date range |
-| `end_date` | `YYYY-MM-DD` | End of the date range |
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `metrics` | `string[]` | — | Metric IDs to include, e.g. `["spend", "rev", "cac"]` |
+| `level` | `platform \| campaign \| adset \| ad` | `campaign` | Granularity of the breakdown |
+| `period_type` | `string` | required | Time period: `YESTERDAY`, `LAST_7_DAYS`, `LAST_30_DAYS`, `LAST_90_DAYS` |
+| `time_granularity` | `DAILY \| WEEKLY \| MONTHLY` | `DAILY` | How to bucket data over time |
+| `attribution_model` | `string` | `northbeam_custom__va` | Attribution model: `northbeam_custom`, `northbeam_custom__va`, `last_touch`, `first_touch`, `linear` |
+
+Common metric IDs: `spend`, `rev`, `cac`, `aov`, `roas`, `clicks`, `impressions`.
